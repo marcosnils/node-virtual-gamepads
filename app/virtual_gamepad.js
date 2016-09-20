@@ -55,6 +55,7 @@ Virtual gamepad class
             uinput_user_dev = Struct().chars('name', uinput.UINPUT_MAX_NAME_SIZE).struct('id', input_id).word32Sle('ff_effects_max').array('absmax', uinput.ABS_CNT, 'word32Sle').array('absmin', uinput.ABS_CNT, 'word32Sle').array('absfuzz', uinput.ABS_CNT, 'word32Sle').array('absflat', uinput.ABS_CNT, 'word32Sle');
             uinput_user_dev.allocate();
             buffer = uinput_user_dev.buffer();
+            buffer.fill(0);
             uidev = uinput_user_dev.fields;
             uidev.name = "Virtual gamepad";
             uidev.id.bustype = uinput.BUS_USB;
